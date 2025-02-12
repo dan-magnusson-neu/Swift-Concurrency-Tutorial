@@ -7,7 +7,7 @@ import Foundation
      generate-documentation --target Swift-Concurrency-Tutorial \
      --disable-indexing \
      --transform-for-static-hosting \
-     --hosting-base-path https://dan-magnusson-neu.github.io/Swift-Concurrency-Tutorial \
+     --hosting-base-path /Swift-Concurrency-Tutorial \
      --output-path docs/
  */
 
