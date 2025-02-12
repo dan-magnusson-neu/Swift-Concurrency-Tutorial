@@ -4,7 +4,7 @@ import Foundation
  // Build docs with:
  
  swift package --allow-writing-to-directory docs/ \
-     generate-documentation --target Swift-Concurrency-Tutorial \
+     generate-documentation --target Concurrency \
      --disable-indexing \
      --transform-for-static-hosting \
      --hosting-base-path /Swift-Concurrency-Tutorial \
