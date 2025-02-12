@@ -1,0 +1,48 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Swift Concurrency") {
+        Modify your executable application to work well with Swift Concurrency.
+        @Image(source: 4-0-1)
+    }
+    
+    @Section(title: "Delivering Reminders Concurrently") {
+        @ContentAndMedia {
+            In Swift Concurrency, the best way to achieve parallel execution is with Task Groups. In order to have reminders print to the terminal based on their duration, you'll need to think about how to create a Task Group that will print them correctly.
+        }
+        @Steps {
+            The first place to look is the `run()` method.
+            @Step {
+                Mark `run()` as `async`. This switches the function over to an async context so that you can utilize Swift Concurrency langauge features here.
+                @Code(name: "ReminderManager.swift", file: 4-1-1.swift, previousFile: 2-1-4.swift)
+            }
+            @Step {
+                Modify main.swift to await the call to run(), now that it is asynchronous.
+                @Code(name: "main.swift", file: 4-1-1-main.swift, previousFile: 2-2-4.swift)
+            }
+            To determine how to create the Task Group, consider the goals of this function. `run()` should print out every `Reminder` in `reminders` after the `reminder.duration` has passed. This tells us that we have a dynamic amount of concurrent tasks we want to spawn. As a result, the `withTaskGroup(...` function seems to be the best choice.
+            @Step {
+                Add a call to the global `withTaskGroup(...` function around our existing code.
+                
+                For the result type, we can use `Void.self`, as we are not returning a payload in each Task at the moment, but instead printing to the terminal.
+                
+                @Code(name: "ReminderManager.swift", file: 4-1-2.swift, previousFile: 4-1-1.swift)
+            }
+            @Step {
+                Add a new task to the group for each reminder.
+                @Code(name: "ReminderManager.swift", file: 4-1-3.swift)
+            }
+            @Step {
+                Let's also adjust our `sleep()` call to use the newer and safer `Task.sleep(for:)`
+                @Code(name: "ReminderManager.swift", file: 4-1-4.swift)
+            }
+            @Step {
+                When you run the program, you will once again see your reminders printing after the delay provided in the `Reminder` struct.
+                @Image(source: 2-2-4-image.png)
+            }
+        }
+    }
+    @Section(title: "Formatting Our Tags") {
+        @ContentAndMedia {
+            Currently the program is just printing out the default array value for a given tag. In this section you'll update the description of our Reminder to properly format our Reminders.
+        }
+    }
+}
