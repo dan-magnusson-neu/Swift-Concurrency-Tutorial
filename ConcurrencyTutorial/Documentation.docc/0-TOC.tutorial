@@ -1,6 +1,6 @@
 @Tutorials(name: "Class 5 - Concurrency") {
     @Intro(title: "Class 5 - Concurrency") {
-        Learn to create asynchronous code using Grand Central Dispatch and Swift Concurrency.
+        Learn to create asynchronous code using Swift Concurrency.
         
         @Image(source: TOC-Header)
     }

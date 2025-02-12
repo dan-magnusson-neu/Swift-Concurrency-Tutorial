@@ -40,9 +40,4 @@
             }
         }
     }
-    @Section(title: "Formatting Our Tags") {
-        @ContentAndMedia {
-            Currently the program is just printing out the default array value for a given tag. In this section you'll update the description of our Reminder to properly format our Reminders.
-        }
-    }
 }
