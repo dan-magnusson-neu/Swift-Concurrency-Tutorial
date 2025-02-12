@@ -1,4 +1,4 @@
-#  Swift Concurrency Tutorial
-
-## <doc:0-TOC>
+#  Concurrency Tutorial
+## Tutorials
+<doc:0-TOC>
 
