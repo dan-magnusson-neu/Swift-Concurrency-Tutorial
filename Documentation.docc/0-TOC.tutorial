@@ -1,0 +1,15 @@
+@Tutorials(name: "Class 5 - Concurrency") {
+    @Intro(title: "Class 5 - Concurrency") {
+        Learn to create asynchronous code using Grand Central Dispatch and Swift Concurrency.
+        
+        @Image(source: TOC-Header)
+    }
+    
+    @Chapter(name: "What's in a Reminder?") {
+        Build an async Reminder type that we can use to send reminder text and tags to the Terminal
+        @Image(source: 1-0-0)
+        @TutorialReference(tutorial: "doc:1-Reminder")
+        @TutorialReference(tutorial: "doc:2-Delivering")
+        @TutorialReference(tutorial: "doc:4-Concurrency")
+    }
+}

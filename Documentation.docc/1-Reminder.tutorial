@@ -1,0 +1,80 @@
+@Tutorial(time: 15) {
+    @Intro(title: "Building Reminders") {
+        Get your project started and build a representation of Reminders in code.
+        @Image(source: 1-0-0)
+    }
+    
+    @Section(title: "Setting Up The Project") {
+        @ContentAndMedia {
+            Before building the Reminder, you'll create a new Swift Executable project using Swift Package Manager.
+            @Image(source: 1-1-0)
+        }
+        @Steps {
+            Use the Terminal to navigate to the directory you want to create the project folder in. 
+            @Step {
+                Create a folder called Reminders.
+                @Image(source: 1-1-1)
+            }
+            
+            @Step {
+                Navigate into that folder and generate a new Swift Package Manager Executable for our project.
+                @Image(source: 1-1-2)
+            }
+
+            @Step {
+                Open our Swift package in Xcode.
+                
+                You can do this with the Terminal command `open Package.swift`, or by navigating to the directory in Finder and double-clicking on the Package.swift file.
+                @Image(source: 1-1-3)
+            }
+        }
+    }
+    
+    @Section(title: "Create A Reminder Struct") {
+        @ContentAndMedia {
+            It's time to create a custom Type to represent your Reminders in code.
+            @Image(source: 1-2-0)
+        }
+        @Steps {
+            @Step {
+                First create a Reminder.swift file that we can place our struct into.
+                @Image(source: 1-2-1)
+            }
+            @Step {
+                Define a Struct named Reminder.
+                
+                Because Reminders will be sent asynchronously to cross concurrency boundaries, and will only be holding simple value types, Struct is the best choice for our Reminder type, for now.
+                @Code(name: "Reminder.swift", file: 1-2-2.swift)
+            }
+            
+            @Step {
+                Define stored properties for the text of the Reminder, and a value for how long before the reminder gets sent. 
+                
+                Our simple case only needs a `Double` for the duration. In a real reminder app, a Date type would be more appropriate. 
+                 
+                @Code(name: "Reminder.swift", file: 1-2-3.swift)
+            }
+            
+            It's best practice when dealing with values that represent Time to specify the units in the documentation for the property.
+            @Step {
+                 Add a documentation comment for our duration specifying the unit of time being measured.
+                
+                You can use the Command-Option-Slash ( **⌘-⌥-/** ) hotkey to auto-generate documentation stubs for any symbol in your code.
+                
+                @Code(name: "Reminder.swift", file: 1-2-3-comment.swift)
+            }
+            
+            @Step {
+                Define a stored property to hold a collection of strings to act as tags for the reminder. This allows users to more easily filter what reminders will show.
+                
+                Knowing that tags should be unique strings helps with deciding that this collection should be a Set of Strings. There would be no reason for a Reminder to have the same tag set twice!
+                @Code(name: "Reminder.swift", file: 1-2-4.swift)
+            }
+            
+            @Step {
+                Finally, make it so that if your Reminder is passed to the `print()` function, it will print in a well-formatted way. For now, let's just return the title and then the set of tags on the next line with an indentation.
+                @Code(name: "Reminder.swift", file: 1-2-5.swift)
+            }
+        }
+    }
+}

@@ -1,0 +1,75 @@
+@Tutorial(time: 20) {
+    @Intro(title: "Delivering Reminders") {
+        Deliver Reminders to the user by formatting them and printing them to the terminal.
+        @Image(source: 1-0-0)
+    }
+    
+    @Section(title: "Building a ReminderManager") {
+        @ContentAndMedia {
+            Build a ReminderManager that keeps track of all active Reminders and prints them when necessary.
+        }
+        @Steps {
+            @Step {
+                Create a new ReminderManager.swift file.
+                @Code(name: "ReminderManager.swift", file: 2-1-1.swift)
+            }
+            @Step {	
+                Add a variable stored property, `reminders` to the `ReminderManager`, so it can track the Reminders.
+                
+                By setting this property to private, you can prevent other developers from making `ReminderManager` remove a `Reminder` when they shouldn't.
+                @Code(name: "ReminderManager.swift", file: 2-1-2.swift)
+            }
+            @Step {
+                Create a function to add Reminders to your `reminders` collection.
+                
+                Because we don't want others modifying our `reminders` externally in whatever way they want, we'll need to "wrap" one of the functions of that property with one of our own. This is a fairly common pattern when building containers on top of other containers, and is similar to (but not quite) the Decorator pattern.
+                @Code(name: "ReminderManager.swift", file: 2-1-3.swift)
+            }
+            
+            To use the global sleep function, you need to import the library which defines it - Foundation.
+            @Step {
+                Import Foundation and build a function called `run()` that will print our Reminders to the terminal after the duration has passed for that reminder.
+                
+                Because we are not yet building this async, our Reminders will print out sequentially, with each one's duration ticking after the next.
+                
+                @Code(name: "ReminderManager.swift", file: 2-1-4.swift)
+            }
+            
+            Currently this loses data due to casting from Double to UInt32 (it will floor any decimal values). This is OK for now, as future steps will fix this issue.
+        }
+    }
+    
+    @Section(title: "Building and Delivering Reminders In main.swift") {
+        @ContentAndMedia {
+            By using an instance of `ReminderManager`, we can keep track of our reminders and print them out as needed. 
+        }
+        @Steps {
+            @Step {
+                In main.swift, declare an instance of our `ReminderManager`.
+                @Code(name: "main.swift", file: 2-2-1)
+            }
+            
+            @Step {
+                Create an array of reminders for us to print out.
+                
+                In a real-world application you would be receiving these from a file, the network, or user input. For now, we are doing what's called "mocking" the data for testing purposes.
+                @Code(name: "main.swift", file: 2-2-2)
+            }
+            @Step {
+                Iterate through the list of reminders and add them to the manager.
+                
+                You could also define an initiliazer for `ReminderManager` and pass an array of reminders to that instead, but we want our interface to be able to add new reminders at later times.
+                @Code(name: "main.swift", file: 2-2-3)
+            }
+            
+            @Step {
+                Call the run function on the manager. 
+                
+                You should see something similar to the preview in your terminal.
+                @Code(name: "main.swift", file: 2-2-4) {
+                    @Image(source: 2-2-4-image)
+                }
+            }
+        }
+    }
+}
